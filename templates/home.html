@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 50px;
+  }
+</style>
+
+<div class="container d-flex justify-content-center mt-50 mb-50">
+  <div class="row">
+    {% for product in products %}
+    <div class="col-md-4 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-img-actions">
+            <img width="200" src="{{product['image']}}" alt="">
+          </div>
+          <div class="card-body bg-light text-center">
+            <div class="mb-2"><h3>{{product['name']}}</h3></div>
+              <div>
+                <h4>Ξ {{product['price']}}</h4>
+              </div>
+              <div><button data-price="{{product['price']}}" data-name="{{product['name']}}"
+                  class="btn-buy btn btn-success"
+                  {% if not session["wallet_address"] %}
+                  disabled
+                  {% endif %}
+                  >Buy Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+        {%endfor%}
+  </div>
+</div>
+{% endblock %}
