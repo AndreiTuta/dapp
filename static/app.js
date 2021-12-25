@@ -42,7 +42,7 @@ function set_wallet_address(wallet_address) {
             $('a#address').text(wallet_address);
             // buy buttons enabled
             $(".btn-buy.btn.btn-success").each(function(){
-                this.prop('disabled', 'false')
+                $(this).removeAttr('disabled');
             });
         }
   });
@@ -117,6 +117,19 @@ $( document ).ready(function() {
 
     $('#enableMetamask').click(function() {
         connect()
+    });
+
+    // If user has locked/logout from MetaMask, this resets the accounts array to empty
+    window.ethereum.on('accountsChanged', (accounts) => {
+        if (!accounts.length) {
+          console.log('Logged out');
+          $('div#logged').hide();
+          set_wallet_address(null);
+          // buy buttons disabled
+          $(".btn-buy.btn.btn-success").each(function(){
+            $(this).attr('disabled', true);
+          });
+        }
     });
 
     $('.btn-buy').click(function() {
