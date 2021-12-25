@@ -15,7 +15,6 @@ def get_products():
     cursor = conn.cursor()
     cursor.execute(sql)
     records = cursor.fetchall()
-    print(records)
     products = []
     for record in records:
         products.append({

@@ -1,5 +1,6 @@
 let currentAccount = null;
-const MERCHANT_ACCOUNT = '0x75bd01A1608E68557A59F86856130bB7dbe6102e'
+const MERCHANT_ACCOUNT = '0xc70ee8732a2875d262e44832d80334fb009d616F'
+
 
 
 /**
@@ -38,7 +39,7 @@ function set_wallet_address(wallet_address) {
         if(status=='success'){
             // logged in state
             $('div#logged').show();
-            $('span#address').text(wallet_address);
+            $('a#address').text(wallet_address);
             // buy buttons enabled
             $(".btn-buy.btn.btn-success").each(function(){
                 this.prop('disabled', 'false')

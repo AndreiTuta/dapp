@@ -15,13 +15,8 @@
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="/">EvilApp</a>
-
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="logged" class="navbar-brand right" style="display: none;float:right;margin-left:50%;">Hello, <span id="address"></span></div>
+    <a class="navbar-brand" href="/">Ecommerce DApp</a>
+    <div id="logged" class="navbar-brand right" style="width:80%;display: none;float:right;margin-left:50%;">Hello, <span><a href="/orders/" id="address"></a></span></div>
 </nav>
 <div class="container">
     {% block content %}{% endblock %}
