@@ -7,7 +7,7 @@ const MERCHANT_ACCOUNT = '0xc70ee8732a2875d262e44832d80334fb009d616F'
     To Generate a random ID
     source:- https://stackoverflow.com/a/1349426/275002
 **/
-function makeid(length) {
+function makeid(prodName, length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
@@ -15,7 +15,7 @@ function makeid(length) {
       result += characters.charAt(Math.floor(Math.random() *
  charactersLength));
    }
-   return result;
+   return prodName + result;
 }
 
 function utf8ToHex(str) {
@@ -71,7 +71,6 @@ function handleAccountsChanged(accounts) {
         $('#wallet_address').val(currentAccount)
         var pathname = window.location.pathname
         if(pathname == '/'){
-            console.log(pathname)
             set_wallet_address(currentAccount)
         }
         $('#status').html('')
@@ -128,7 +127,7 @@ $( document ).ready(function() {
         console.log('RESULT ='+eth_wei)
         console.log('Wallet ='+currentAccount)
         console.log('RESULT IN HEX ='+eth_wei.toString(16))
-        let invoice_id = 'INV-'+makeid(5)
+        let invoice_id = 'INV-'+makeid(name, 5)
         console.log(invoice_id)
 
         const transactionParameters = {
