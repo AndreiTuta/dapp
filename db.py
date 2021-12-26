@@ -1,3 +1,4 @@
+import re
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -18,6 +19,7 @@ def get_products():
     products = []
     for record in records:
         products.append({
+            'id': records.index(record) + 1,
             'name': record[0],
             'price': record[1],
             'image': record[2]

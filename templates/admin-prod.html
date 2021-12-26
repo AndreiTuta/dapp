@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  ul {
+    list-style:none;
+    padding:0;
+  }
+  li {
+    margin-bottom:50px;
+  }
+
+</style>
+<div style="margin-top:30px;" class="row">
+    <div class="col-md-12">
+        <h3>Products</h3>
+    </div>
+</div>
+<div style="margin-top:30px;" class="row">
+    <div class="col-md-12">
+        <table  class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Product Name</th>
+                <th>Price Ξ</th>
+                <th>Image</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for prod in products %}
+            <tr>
+                <td id="prod-id-{{prod.id}}"></td>
+                <td><small id="prod-name-{{prod.id}}">{{prod.name}}</small></td>
+                <td><small id="prod-price-{{prod.id}}">{{prod.price}}</small></td>
+                <td><small id="prod-image-{{prod.id}}">{{prod.image}}</small></td>
+                <td>
+                    <button class="edit btn btn-success" id="prod-edit-{{prod.id}}" ><img src="https://img.icons8.com/material-outlined/24/000000/pencil--v3.png"/>
+                    </button>    
+                </td>
+                <td>
+                    <button class="delete btn btn-danger" id="prod-remove-{{prod.id}}"><img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png"/>
+                    </button>    
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+function edit(productId){
+    console.log("Edit ", productId);
+}
+function remove(productId){
+    console.log("Delete ", productId);
+}
+
+$(document).ready(function() {
+        $(".edit").on('click', function(){
+            var productId = $(this).attr('id').split('-')[2]
+            edit(productId);
+        });
+        $(".delete").on('click', function(){
+            var productId = $(this).attr('id').split('-')[2]
+            remove(productId);
+        });
+    });
+</script>
+{% endblock %}
