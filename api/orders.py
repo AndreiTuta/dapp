@@ -1,5 +1,5 @@
 from flask import Blueprint, request, session, render_template
-from db import add_order_data, get_orders
+from repository import add_order_data, get_orders
 
 
 orders_blueprint=Blueprint("orders", __name__)

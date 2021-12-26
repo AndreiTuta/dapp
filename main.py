@@ -1,7 +1,7 @@
 import json
 
 from flask import Flask, render_template, request, url_for, redirect, flash, session
-from db import get_products
+from repository import get_products
 from api.orders import orders_blueprint
 from api.admin import admin_blueprint
 

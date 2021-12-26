@@ -1,6 +1,6 @@
 from flask import Blueprint, request, session, render_template
 from flask.wrappers import Response
-from db import add_order_data, get_orders, get_products
+from repository import add_order_data, get_orders, get_products
 
 ADMIN = '0x3AB21F324B5c61429A933d19547b7480D445b795'
 
@@ -18,3 +18,11 @@ def admin():
         return render_template('admin-prod.html', products=products)
     else:
         return Response('Not available', 404)
+
+@admin_blueprint.post('/products/<id>')
+def edit_product(id: int):
+    print(id)
+    print(request.form['name'])
+    print(request.form['price'])
+    print(request.form['image'])
+    return "Hello"
