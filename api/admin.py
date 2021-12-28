@@ -1,6 +1,6 @@
 from flask import Blueprint, request, session, render_template
 from flask.wrappers import Response
-from db import add_order_data, get_orders, get_products, set_product
+from db import get_products, set_product, remove_product
 
 ADMIN = '0x3AB21F324B5c61429A933d19547b7480D445b795'
 
@@ -22,3 +22,15 @@ def admin():
 @admin_blueprint.post('/products/<id>')
 def edit_product(id: int):
     updated = set_product(id, request.form['name'], request.form['price'], request.form['image'])
+    msg, code = "Fail", 400
+    if updated:
+        msg, code = "Success", 200
+    return Response(msg, code)
+
+@admin_blueprint.delete('/products/<id>')
+def delte_product(id: int):
+    updated = remove_product(id)
+    msg, code = "Fail", 400
+    if updated:
+        msg, code = "Success", 200
+    return Response(msg, code)
