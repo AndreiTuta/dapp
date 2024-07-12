@@ -2,7 +2,7 @@ from flask import Blueprint, request, session, render_template
 from flask.wrappers import Response
 from db import get_products, set_product, remove_product
 
-ADMIN = '0x3AB21F324B5c61429A933d19547b7480D445b795'
+ADMIN = '0xe17Fc8F08348C35E81B233D94Ae2f115a69Ed40a'
 
 admin_blueprint=Blueprint("admin", __name__)
 
